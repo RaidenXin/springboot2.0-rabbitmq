@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="public-model" />
         <module name="springboot-rabbitmq-consumer" />
         <module name="springboot-rabbitmq-producer" />
       </profile>
@@ -13,6 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="public-model" options="-parameters" />
       <module name="springboot-rabbitmq-consumer" options="-parameters" />
       <module name="springboot-rabbitmq-producer" options="-parameters" />
     </option>

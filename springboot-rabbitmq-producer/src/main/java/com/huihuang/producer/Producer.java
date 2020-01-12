@@ -1,10 +1,11 @@
 package com.huihuang.producer;
 
+import com.alibaba.fastjson.JSON;
+import com.raiden.rabbitmq.dto.MQMessage;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 
 @Component
 public class Producer {
@@ -12,9 +13,7 @@ public class Producer {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-    public void sendMsg(String queueName){
-        //创建消息
-        String msg = "my_fanout_msg:" + new Date();
-        amqpTemplate.convertAndSend(queueName, msg);
+    public void sendMsg(String queueName, MQMessage mqMessage){
+        amqpTemplate.convertAndSend(queueName, JSON.toJSONString(mqMessage));
     }
 }
